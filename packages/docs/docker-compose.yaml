@@ -1,0 +1,17 @@
+# Configuration of the Docker Compose file for documentation app.
+---
+services:
+    frontend:
+        container_name: oliverperzyk-chest-ui-docs
+        restart: unless-stopped
+        build:
+            dockerfile: Dockerfile
+            context: .
+            args:
+                APP_PORT: "${APP_PORT:-3000}"
+        environment:
+            NODE_ENV: "${NODE_ENV:-production}"
+        env_file:
+            - .env
+        ports:
+            - "${APP_PORT:-3000}:${APP_PORT:-3000}"
