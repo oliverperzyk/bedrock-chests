@@ -1,0 +1,15 @@
+#!/bin/bash
+# This file is being executed before every single commit.
+
+bunx lint-staged
+cd packages
+(
+    cd docs
+    bunx lint-staged
+)
+(
+    cd lib
+)
+(
+    cd resource-pack
+)

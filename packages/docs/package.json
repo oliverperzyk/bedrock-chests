@@ -31,6 +31,15 @@
         "build": "bunx next build",
         "start": "bunx next start"
     },
+    "lint-staged": {
+        "**/*.{ts,tsx,js,jsx,json,json5,jsonc,css,md,mdx}": [
+            "bunx eslint --fix",
+            "bunx prettier --write --ignore-unknown"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write --ignore-unknown"
+        ]
+    },
     "dependencies": {
         "@wrksz/themes": "^1.0.0",
         "next": "16.2.6",
@@ -51,6 +60,7 @@
         "eslint": "^10.7.0",
         "eslint-config-next": "^16.2.10",
         "globals": "^17.7.0",
+        "lint-staged": "^17.0.8",
         "prettier": "^3.9.5",
         "tailwindcss": "^4",
         "typescript": "^5",

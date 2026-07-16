@@ -1,0 +1,16 @@
+#!/bin/bash
+# This file is being executed before pushing via git.
+
+bun run format:check
+cd packages
+(
+    cd docs
+    bun run lint:fix
+    bun run format:check
+)
+(
+    cd lib
+)
+(
+    cd resource-pack
+)
