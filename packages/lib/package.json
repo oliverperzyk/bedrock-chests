@@ -27,7 +27,11 @@
         "lint:fix": "bunx eslint --fix ."
     },
     "lint-staged": {
-        "**/*.{json,json5,jsonc,yml,yaml}": [
+        "**/*.{ts,json,json5,jsonc,md}": [
+            "bunx prettier --write --ignore-unknown",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
             "bunx prettier --write --ignore-unknown"
         ]
     },

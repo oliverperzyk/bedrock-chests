@@ -33,8 +33,8 @@
     },
     "lint-staged": {
         "**/*.{ts,tsx,js,jsx,json,json5,jsonc,css,md,mdx}": [
-            "bunx eslint --fix",
-            "bunx prettier --write --ignore-unknown"
+            "bunx prettier --write --ignore-unknown",
+            "bunx eslint --fix"
         ],
         "**/*.{yml,yaml}": [
             "bunx prettier --write --ignore-unknown"
