@@ -1,6 +1,6 @@
 /**
- * @summary Test environment for the documentation application.
- * @description A class that initializes the test environment for the documentation application.
+ * @summary Test environment for the library.
+ * @description A class that initializes the test environment for the library.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 class TestEnvironment {
