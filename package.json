@@ -4,9 +4,27 @@
     "version": "1.0.0",
     "private": true,
     "author": {
-
+        "name": "oliverperzyk (Oliwier Perzyński)",
+        "email": "olek@oliverperzyk.com",
+        "url": "https://oliverperzyk.com"
+    },
+    "homepage": "https://chest-ui.oliverperzyk.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oliverperzyk/chest-ui.git"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oliverperzyk/chest-ui/issues"
     },
     "engines": {
         "bun": ">=1.3.0"
+    },
+    "scripts": {
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check ."
+    },
+    "devDependencies": {
+        "prettier": "^3.9.5"
     }
 }
