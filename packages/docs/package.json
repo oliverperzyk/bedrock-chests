@@ -3,6 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check .",
         "dev": "next dev",
         "build": "next build",
         "start": "next start"
@@ -19,6 +21,7 @@
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "babel-plugin-react-compiler": "1.0.0",
+        "prettier": "^3.9.5",
         "tailwindcss": "^4",
         "typescript": "^5"
     },
