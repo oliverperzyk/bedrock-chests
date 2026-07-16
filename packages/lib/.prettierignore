@@ -19,10 +19,6 @@
 /**/*.env*
 !/**/.env.example
 
-# Packages' files.
-# They'll have their own configuration files.
-/packages/
-
 # Operating system files.
 /**/*.DS_Store*
 /**/*.ini*
