@@ -1,0 +1,20 @@
+# IDE files.
+/.idea/
+/.vscode/
+/.vs/
+/.cursor/
+
+# Dependencies & distribution files.
+/**/node_modules/
+/**/dist/
+/**/out/
+/**/build/
+/**/*.tsbuildinfo
+
+# Environment variables files.
+/**/*.env*
+!/**/.env.example
+
+# Operating system files.
+/**/*.DS_Store*
+/**/*.ini*
