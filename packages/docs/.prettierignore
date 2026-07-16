@@ -1,0 +1,12 @@
+# Distribution files.
+/next/
+
+# Testing coverage.
+/coverage/
+
+# Next.js files.
+/.next/
+/.vercel/
+
+# TypeScript files.
+/next-env.d.ts
