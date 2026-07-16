@@ -22,7 +22,5 @@ class TestEnvironment {
      * @summary Initializes the test environment.
      * @description Initializes the test environment.
      */
-    private static async init(): Promise<void> {
-        
-    }
+    private static async init(): Promise<void> {}
 }
