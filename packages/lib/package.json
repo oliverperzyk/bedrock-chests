@@ -1,6 +1,6 @@
 {
     "name": "@oliverperzyk/chest-ui",
-    "description": "A easy way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
+    "description": "The easiest way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
     "version": "1.0.0",
     "private": false,
     "author": {
