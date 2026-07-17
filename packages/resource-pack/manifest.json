@@ -1,0 +1,25 @@
+{
+    "format_version": 3,
+    "metadata": {
+        "authors": [
+            "oliverperzyk (Oliwier Perzyński) <olek@oliverperzyk.com>"
+        ],
+        "product_type": "addon",
+        "url": "https://chest-ui.oliverperzyk.com"
+    },
+    "header": {
+        "name": "pack.name",
+        "description": "pack.description",
+        "uuid": "09e073a2-8570-4e76-b53d-1ccee1abcb8a",
+        "version": "0.0.1",
+        "min_engine_version": "1.26.30",
+        "pack_scope": "world"
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "ca250f81-59d2-4fb4-ba41-6402e649ba96",
+            "version": "0.0.1"
+        }
+    ]
+}
