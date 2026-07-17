@@ -1,4 +1,5 @@
 import type { NextConfig } from "next"
+import { join } from "path"
 
 /**
  * @summary Configuration of Next.js.
@@ -9,25 +10,25 @@ export default {
     typedRoutes: true,
     reactCompiler: true,
     reactStrictMode: true,
+    turbopack: {
+        root: join(import.meta.dirname, "../.."),
+    },
     async redirects() {
         return [
             {
                 source: "/repository",
                 destination: "https://github.com/oliverperzyk/chest-ui",
                 permanent: true,
-                priority: true,
             },
             {
                 source: "/issues",
                 destination: "https://github.com/oliverperzyk/chest-ui/issues",
                 permanent: true,
-                priority: true,
             },
             {
                 source: "/github",
                 destination: "https://github.com/oliverperzyk/chest-ui",
                 permanent: true,
-                priority: true,
             },
         ]
     },
