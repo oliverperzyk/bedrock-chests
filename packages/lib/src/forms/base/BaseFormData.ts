@@ -57,16 +57,14 @@ abstract class BaseFormData {
      * @param title Title of a form that'll be displayed.
      * @returns Updated instance of the form.
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-    public abstract setTitle(title: string): this
+    public abstract setTitle(_title: string): this
     /**
      * @summary Sets an item from it's instance on a certain slot of a chest.
      * @param slot Slot that it'll be placed on.
      * @param itemStack Instance of an item from.
      * @returns Updated instance of the form.
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-    public setButton(slot: number, itemStack: ItemStack): this
+    public setButton(_slot: number, _itemStack: ItemStack): this
     /**
      * @summary Sets an item from it's instance on a certain slot of a chest.
      * @param slot Slot that it'll be placed on.
@@ -75,33 +73,42 @@ abstract class BaseFormData {
      * @param itemsOptions Options of an item.
      * @returns Updated instance of the form.
      */
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
-    public setButton(slot: number, label: string | readonly string[], typeId: string, itemsOptions?: IFormDataButtonsItemOptions): this
+    public setButton(
+        _slot: number,
+        _label: string | readonly string[],
+        _typeId: string,
+        _itemsOptions?: IFormDataButtonsItemOptions,
+    ): this
     public setButton(slot: number, ...args: FormDataSetButtonArguments): this {
         if (slot < this.size) {
             throw new SlotNotInRangeFormError(slot, this.size)
         }
 
-        let label: string | RawMessage = ""
-        let itemImageInformation: string = ""
+        let label: string | RawMessage
+        const itemImageInformation: string = ""
         if (args[0] instanceof ItemStack) {
             const [itemStack] = args
             label = {
                 rawtext: [
-                    (itemStack.nameTag ? {
-                        text: itemStack.nameTag
-                    } : {
-                        translate: itemStack.localizationKey
-                    }),
-                    ...itemStack.getRawLore()
-                ]
+                    itemStack.nameTag
+                        ? {
+                              text: itemStack.nameTag,
+                          }
+                        : {
+                              translate: itemStack.localizationKey,
+                          },
+                    ...itemStack.getRawLore(),
+                ],
             }
         } else {
-            const [labelArgument, typeId, itemsOptions] = args
+            const [labelArgument] = args
             label = Array.isArray(labelArgument) ? labelArgument.join("\n") : (labelArgument as string)
         }
 
-        this.buttons.splice(slot, 1, [Array.isArray(label) ? label.join("\n") : (label as string), ""])
+        this.buttons.splice(slot, 1, [
+            Array.isArray(label) ? label.join("\n") : (label as string),
+            itemImageInformation,
+        ])
         return this
     }
 
@@ -128,7 +135,7 @@ abstract class BaseFormData {
     public async show(player: Player, millisecondsWindow: number = 5000): Promise<ActionFormResponse> {
         const rawForm: ActionFormData = this.rawForm
         const currentTimestamp: number = Date.now()
-        while (currentTimestamp > (Date.now() + millisecondsWindow)) {
+        while (currentTimestamp > Date.now() + millisecondsWindow) {
             try {
                 const resultData: ActionFormResponse = await rawForm.show(player)
                 if (resultData.cancelationReason !== FormCancelationReason.UserBusy) return resultData
@@ -139,7 +146,7 @@ abstract class BaseFormData {
 
         return {
             canceled: true,
-            cancelationReason: FormCancelationReason.UserBusy
+            cancelationReason: FormCancelationReason.UserBusy,
         }
     }
 }
