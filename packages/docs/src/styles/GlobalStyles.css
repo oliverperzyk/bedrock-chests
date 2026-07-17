@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@layer theme {
+    :root {
+        color-scheme: light dark;
+        --color-background: light-dark(#ffffff, #000000);
+        --color-foreground: light-dark(#000000, #ffffff);
+    }
+}
+
+@layer base {
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--color-background);
+        color: var(--color-foreground);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+}
