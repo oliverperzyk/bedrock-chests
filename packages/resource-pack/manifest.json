@@ -1,9 +1,7 @@
 {
     "format_version": 3,
     "metadata": {
-        "authors": [
-            "oliverperzyk (Oliwier Perzyński) <olek@oliverperzyk.com>"
-        ],
+        "authors": ["oliverperzyk (Oliwier Perzyński) <olek@oliverperzyk.com>"],
         "product_type": "addon",
         "url": "https://chest-ui.oliverperzyk.com"
     },

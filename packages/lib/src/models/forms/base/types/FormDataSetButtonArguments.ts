@@ -1,5 +1,5 @@
-import type { ItemStack } from "@minecraft/server";
-import type { IFormDataButtonsItemOptions } from "../interfaces/IFormDataButtonsItemOptions";
+import type { ItemStack } from "@minecraft/server"
+import type { IFormDataButtonsItemOptions } from "../interfaces/IFormDataButtonsItemOptions"
 
 /**
  * @summary An array with types that method of setting a button can take.

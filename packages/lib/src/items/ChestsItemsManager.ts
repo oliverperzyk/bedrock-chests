@@ -64,7 +64,7 @@ class ChestsItemsManager {
     public static getAuxId(typeId: string, enchanted: boolean = false): number | null {
         const rawId: number | undefined = this.ITEMS.get(typeId)
         if (rawId === undefined) return null
-        return rawId * 65536 + (Number(enchanted) * 32768)
+        return rawId * 65536 + Number(enchanted) * 32768
     }
 }
 

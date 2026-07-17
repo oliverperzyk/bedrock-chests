@@ -5,7 +5,7 @@
  * ```ts
  * import { ChestFormData } from "@oliverperzyk/chest-ui"
  * import { ItemStack } from "@minecraft/server"
- * 
+ *
  * const form: ChestFormData = new ChestFormData(27)
  * // This line of code will throw SlotNotInRangeFormError.
  * form.setButton(30, new ItemStack("minecraft:stick", 1))
@@ -18,7 +18,10 @@ class SlotNotInRangeFormError extends Error {
      * @param formSize Size of a form.
      * @returns Instance of an error.
      */
-    public constructor(public readonly slot: number, public readonly formSize: number) {
+    public constructor(
+        public readonly slot: number,
+        public readonly formSize: number,
+    ) {
         super(`Slot (${slot}) exceeds form's size (${formSize}) limit.`)
         this.name = "SlotNotInRangeFormError"
         Object.setPrototypeOf(this, SlotNotInRangeFormError.prototype)
