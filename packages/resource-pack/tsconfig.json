@@ -1,8 +1,8 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "noEmit": true,
         // Compiler options.
+        "noEmit": true,
         "target": "ES2022",
         "module": "ESNext",
         "moduleResolution": "Bundler",
