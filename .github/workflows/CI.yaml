@@ -1,6 +1,6 @@
 # Workflow to verify codebase of every single library & application in the project.
 ---
-name: Validate every single libraries.
+name: Validate every single library in the project.
 on:
     push:
     pull_request:
