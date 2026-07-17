@@ -1,5 +1,5 @@
 {
-    "name": "@oliverperzyk/chest-ui/resource-pack",
+    "name": "@chest-ui/resource-pack",
     "description": "Resource pack for the Chest UI library, that is in demand of rendering GUI components.",
     "version": "1.0.0",
     "private": true,
