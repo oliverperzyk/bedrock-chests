@@ -26,6 +26,8 @@ jobs:
               run: bun install --frozen-lockfile
             - name: Check formatting of all files using Prettier.
               run: bun run format:check
+            - name: Check linting of all files using ESLint.
+              run: bun run lint
     validate-documentation-application:
         name: Validate documentation application.
         runs-on: ubuntu-latest

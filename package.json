@@ -23,15 +23,25 @@
     "scripts": {
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
+        "lint": "bunx eslint .",
+        "lint:fix": "bunx eslint --fix .",
         "prepare": "bunx husky"
     },
     "lint-staged": {
-        "**/*.{json,json5,jsonc,yml,yaml}": [
+        "**/*.{json,json5,jsonc,md}": [
+            "bunx prettier --write --ignore-unknown",
+            "bunx eslint --fix"
+        ],
+        "**/*.{ts,yml,yaml}": [
             "bunx prettier --write --ignore-unknown"
         ]
     },
     "devDependencies": {
+        "@eslint/json": "^2.0.1",
+        "@eslint/markdown": "^8.0.3",
+        "eslint": "^10.7.0",
         "husky": "^9.1.7",
+        "jiti": "^2.7.0",
         "lint-staged": "^17.0.8",
         "prettier": "^3.9.5"
     }
