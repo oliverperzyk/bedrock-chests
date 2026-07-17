@@ -24,7 +24,9 @@
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
-        "lint:fix": "bunx eslint --fix ."
+        "lint:fix": "bunx eslint --fix .",
+        "test": "bun test",
+        "test:init": "bun ./tests/TestEnvironment.ts"
     },
     "lint-staged": {
         "**/*.{ts,json,json5,jsonc,md}": [
