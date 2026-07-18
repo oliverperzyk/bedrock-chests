@@ -28,6 +28,7 @@
         "lint:fix": "bunx eslint --fix .",
         "test": "bun test",
         "test:init": "bun ./tests/TestEnvironment.ts",
+        "healthcheck": "bun run scripts/docker/HealthCheckDockerScript.ts",
         "dev": "bunx next dev",
         "build": "bunx next build",
         "start": "bunx next start"

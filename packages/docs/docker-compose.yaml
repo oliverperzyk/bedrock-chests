@@ -13,5 +13,11 @@ services:
             NODE_ENV: "${NODE_ENV:-production}"
         env_file:
             - .env
+        healthcheck:
+            test: ["CMD", "bun", "run", "healthcheck"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 40s
         ports:
             - "${APP_PORT:-3000}:${APP_PORT:-3000}"
