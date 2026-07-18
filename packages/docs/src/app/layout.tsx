@@ -3,8 +3,9 @@ import type { IChildren } from "../libs/models/components/general/interfaces/ICh
 import type { JSX } from "react"
 import { ThemeProvider } from "@wrksz/themes/next"
 import { SocialData } from "../libs/globals/SocialData"
-import "@/oliverperzyk/styles/GlobalStyles.css"
 import { EnvironmentVariables } from "../libs/globals/EnvironmentVariables"
+import { MINECRAFT_FIVE, MINECRAFT_TEN, MOJANGLES } from "./LocalFonts"
+import "@/oliverperzyk/styles/GlobalStyles.css"
 
 /**
  * @summary Metadata information.
@@ -57,7 +58,11 @@ const viewport: Viewport = {
  */
 function RootLayout({ children }: Readonly<IChildren>): JSX.Element {
     return (
-        <html lang="en-US" className="h-full antialiased" suppressHydrationWarning>
+        <html
+            lang="en-US"
+            className={`${MINECRAFT_FIVE.variable} ${MINECRAFT_TEN.variable} ${MOJANGLES.variable} h-full antialiased`}
+            suppressHydrationWarning
+        >
             <body className="min-h-full flex flex-col">
                 <ThemeProvider>{children}</ThemeProvider>
             </body>
