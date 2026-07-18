@@ -33,6 +33,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             NODE_ENV: test
+            NEXT_PUBLIC_API_URL: https://chest-ui.oliverperzyk.com
         defaults:
             run:
                 working-directory: packages/docs
