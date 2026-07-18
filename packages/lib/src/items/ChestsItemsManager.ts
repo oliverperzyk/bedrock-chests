@@ -1,4 +1,5 @@
 import { HardCodedChestsItemsData } from "./data/HardCodedChestsItemsData"
+import { DataChestsItemsData } from "./data/DataChestsItemsData"
 
 /**
  * @summary Manager for all items that are used by forms.
@@ -14,7 +15,10 @@ class ChestsItemsManager {
      * @summary All items registered in a library.
      * @description This hashmap includes both - vanilla & custom items.
      */
-    private static readonly ITEMS: Map<string, number> = new Map(HardCodedChestsItemsData.VANILLA_ITEMS.entries())
+    private static readonly ITEMS: Map<string, number> = new Map([
+        ...HardCodedChestsItemsData.VANILLA_ITEMS.entries(),
+        ...DataChestsItemsData.VANILLA_ITEMS.entries(),
+    ])
 
     /**
      * @summary Static initialization block.
