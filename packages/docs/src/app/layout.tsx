@@ -4,8 +4,30 @@ import type { JSX } from "react"
 import { ThemeProvider } from "@wrksz/themes/next"
 import { SocialData } from "../libs/globals/SocialData"
 import "@/oliverperzyk/styles/GlobalStyles.css"
+import { EnvironmentVariables } from "../libs/globals/EnvironmentVariables"
 
-const metadata: Metadata = {}
+/**
+ * @summary Metadata information.
+ * @description Default metadata information for the whole application.
+ */
+const metadata: Metadata = {
+    metadataBase: EnvironmentVariables.WEBSITE_ENDPOINT_URL,
+    title: "@oliverperzyk/chest-ui",
+    description: "The easiest way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
+    applicationName: "@oliverperzyk/chest-ui",
+    creator: "oliverperzyk (Oliwier Perzyński)",
+    authors: [
+        {
+            name: "oliverperzyk (Oliwier Perzyński)",
+            url: "https://oliverperzyk.com",
+        },
+    ],
+    openGraph: {
+        type: "website",
+        title: "@oliverperzyk/chest-ui",
+        description: "The easiest way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
+    },
+}
 
 /**
  * @summary Viewport information.
