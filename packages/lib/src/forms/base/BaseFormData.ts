@@ -18,7 +18,7 @@ abstract class BaseFormData {
      * @summary Title of a form.
      * @description Stores a title of a form. This field should not include the part that is required by JSON UI in a resource pack later.
      */
-    protected abstract title: string
+    protected abstract title: string | RawMessage
     /**
      * @summary Buttons of a form.
      * @description Hashmap that includes parsed content of all buttons.
