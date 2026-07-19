@@ -9,6 +9,7 @@ export const MOJANGLES = localFont({
     variable: "--font-mojangles-face",
     display: "swap",
 })
+
 /**
  * @summary Minecraft Five font.
  * @description This font is used to display Minecraft Five text. Mostly text.
@@ -18,6 +19,7 @@ export const MINECRAFT_FIVE = localFont({
     variable: "--font-minecraft-five-face",
     display: "swap",
 })
+
 /**
  * @summary Minecraft Ten font.
  * @description This font is used to display Minecraft Ten text. Mostly headers.
