@@ -6,7 +6,11 @@ import type { JSX } from "react"
  * @returns The home page component.
  */
 function HomePage(): JSX.Element {
-    return <></>
+    return (
+        <>
+            <p className="font-minecraft-five">Minecraft Five</p>
+        </>
+    )
 }
 
 export default HomePage

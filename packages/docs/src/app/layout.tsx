@@ -6,6 +6,7 @@ import { SocialData } from "../libs/globals/SocialData"
 import { EnvironmentVariables } from "../libs/globals/EnvironmentVariables"
 import { MINECRAFT_FIVE, MINECRAFT_TEN, MOJANGLES } from "./LocalFonts"
 import "@/oliverperzyk/styles/GlobalStyles.css"
+import NavigationBarComponent from "../components/layout/navigation/NavigationBarComponent"
 
 /**
  * @summary Metadata information.
@@ -64,7 +65,10 @@ function RootLayout({ children }: Readonly<IChildren>): JSX.Element {
             suppressHydrationWarning
         >
             <body className="min-h-full flex flex-col">
-                <ThemeProvider>{children}</ThemeProvider>
+                <ThemeProvider>
+                    <NavigationBarComponent />
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )
