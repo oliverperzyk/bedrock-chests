@@ -1,8 +1,12 @@
 # IDE files.
-/.idea/
-/.vscode/
-/.vs/
-/.cursor/
+/**/.idea/
+/**/.vscode/
+/**/.vs/
+/**/.cursor/
+# AI files.
+/**/.claude/
+/**/.codex/
+/**/.ai/
 
 # Dependencies & distribution files.
 /**/node_modules/
