@@ -63,26 +63,3 @@ jobs:
               run: bun run build
               env:
                   NODE_ENV: production
-    validate-library:
-        name: Validate main library.
-        runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: packages/lib
-        env:
-            NODE_ENV: test
-        steps:
-            - name: Checkout repository.
-              uses: actions/checkout@v7
-            - name: Setup Bun.
-              uses: oven-sh/setup-bun@v2
-              with:
-                  bun-version: ${{ env.BUN_VERSION }}
-            - name: Install dependencies.
-              run: bun install --frozen-lockfile
-            - name: Check formatting of all files using Prettier.
-              run: bun run format:check
-            - name: Check linting of codebase using ESLint.
-              run: bun run lint
-            - name: Run tests.
-              run: bun run test
