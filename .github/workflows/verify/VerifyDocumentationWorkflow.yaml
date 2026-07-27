@@ -39,7 +39,7 @@ jobs:
               uses: hadolint/hadolint-action@v3.3.0
               with:
                   dockerfile: apps/docs/Dockerfile
-                  config: apps/docs/.hadolint.yaml
+                  config: apps/shared/.hadolint.yaml
             - name: Run tests.
               run: bun run test
             - name: Build production-ready website.
