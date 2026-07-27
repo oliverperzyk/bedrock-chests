@@ -13,7 +13,6 @@
 /**/*.js
 /**/*.cjs
 /**/*.mjs
-!/**/postcss.config.js
 
 # Environment variables files.
 /**/*.env*

@@ -9,7 +9,7 @@ import { defineConfig } from "eslint/config"
  */
 export default defineConfig([
     {
-        // Packages directory is ignored as they do have their own ESLint configuration.
+        // Apps & packages directories are ignored as they do have their own ESLint configuration.
         ignores: ["packages/**"],
     },
     {
