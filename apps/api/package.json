@@ -25,7 +25,9 @@
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
-        "lint:fix": "bunx eslint --fix ."
+        "lint:fix": "bunx eslint --fix .",
+        "healthcheck": "bun run ./scripts/docker/HealthCheckDockerScript.ts",
+        "build": "bun build --target bun --outdir dist --minify ./src/Main.ts"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",

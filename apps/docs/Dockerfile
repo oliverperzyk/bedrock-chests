@@ -9,13 +9,13 @@ RUN bun run build
 FROM oven/bun:canary-slim AS runner
 
 LABEL org.opencontainers.image.title="@oliverperzyk/chest-ui/docs" \
-      org.opencontainers.image.description="A web application that allows users to join the waitlist for the Humavery platform." \
+      org.opencontainers.image.description="A documentation website for the Chest UI." \
       org.opencontainers.image.version="0.0.1" \
-      org.opencontainers.image.authors="Humavery <contact@humavery.com>" \
+      org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \
       org.opencontainers.image.licenses="AGPL-3.0-only" \
-      org.opencontainers.image.url="https://github.com/Humavery/frontend" \
-      org.opencontainers.image.documentation="https://humavery.com/resources/docs" \
-      org.opencontainers.image.source="https://github.com/Humavery/frontend.git"
+      org.opencontainers.image.url="https://github.com/oliverperzyk/chest-ui" \
+      org.opencontainers.image.documentation="https://github.com/oliverperzyk/chest-ui" \
+      org.opencontainers.image.source="https://github.com/oliverperzyk/chest-ui.git"
 
 WORKDIR /app
 ENV NODE_ENV=production \
