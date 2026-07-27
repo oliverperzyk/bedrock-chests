@@ -1,0 +1,39 @@
+# Workflow to verify the resource pack of the project.
+---
+name: Verify resource pack.
+on:
+    push:
+        paths:
+            - "packages/resource-pack/**"
+            - ".github/workflows/verify/VerifyResourcePackWorkflow.yaml"
+    pull_request:
+        paths:
+            - "packages/resource-pack/**"
+            - ".github/workflows/verify/VerifyResourcePackWorkflow.yaml"
+permissions:
+    contents: read
+defaults:
+    run:
+        working-directory: packages/resource-pack
+        shell: bash
+jobs:
+    verify-resource-pack:
+        name: Verify resource pack.
+        runs-on: ubuntu-latest
+        env:
+            NODE_ENV: test
+        steps:
+            - name: Checkout repository.
+              uses: actions/checkout@v7
+            - name: Setup Bun.
+              uses: oven-sh/setup-bun@v2
+            - name: Install dependencies.
+              run: bun install --frozen-lockfile
+            - name: Initialize testing environment.
+              run: bun run test:init
+            - name: Check formatting of all files using Prettier.
+              run: bun run format:check
+            - name: Check linting of all files using ESLint.
+              run: bun run lint
+            - name: Run tests.
+              run: bun run test
