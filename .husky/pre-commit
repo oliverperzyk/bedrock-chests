@@ -5,6 +5,10 @@ bunx lint-staged
 (
     cd apps
     (
+        cd api
+        bunx lint-staged
+    )
+    (
         cd docs
         bunx lint-staged
     )

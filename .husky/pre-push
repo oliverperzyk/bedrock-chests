@@ -5,6 +5,11 @@ bun run format:check
 (
     cd apps
     (
+        cd api
+        bun run format:check
+        bun run lint:fix
+    )
+    (
         cd docs
         bun run format:check
         bun run lint:fix
