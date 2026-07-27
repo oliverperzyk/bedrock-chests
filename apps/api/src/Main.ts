@@ -22,7 +22,7 @@ class Main {
      * @summary Initializes the API.
      * @description Initializes the API & its dependencies.
      */
-    private static async init(): Promise<void> { 
+    private static async init(): Promise<void> {
         console.log("Hello, world!")
     }
 }

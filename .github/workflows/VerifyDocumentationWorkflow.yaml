@@ -22,6 +22,8 @@ jobs:
         runs-on: ubuntu-latest
         env:
             NODE_ENV: test
+            # Website's environment variables.
+            NEXT_PUBLIC_WEBSITE_ENDPOINT_URL: https://chest-ui.oliverperzyk.com
         steps:
             - name: Checkout repository.
               uses: actions/checkout@v7
