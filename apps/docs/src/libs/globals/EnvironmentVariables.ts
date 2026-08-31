@@ -1,3 +1,4 @@
+import type { NodeEnvironment } from "../models/general/environment/enums/NodeEnvironment"
 import { EnvironmentVariablesDataManager } from "./managers/security/EnvironmentVariablesDataManager"
 
 /**
@@ -15,7 +16,7 @@ class EnvironmentVariables {
      * @summary Environment that application runs in.
      * @description Application's environment is in demand to enable or disable some of the things on the website.
      */
-    public static readonly NODE_ENV: string = EnvironmentVariablesDataManager.getNodeEnvironment()
+    public static readonly NODE_ENV: NodeEnvironment = EnvironmentVariablesDataManager.getNodeEnvironment()
 
     /**
      * @summary Endpoint to the website. Used mostly for SEO things.
@@ -24,6 +25,16 @@ class EnvironmentVariables {
     public static readonly WEBSITE_ENDPOINT_URL: URL = EnvironmentVariablesDataManager.getURL(
         "NEXT_PUBLIC_WEBSITE_ENDPOINT_URL",
         process.env.NEXT_PUBLIC_WEBSITE_ENDPOINT_URL,
+        true,
+    )
+
+    /**
+     * @summary Endpoint to the API server.
+     * @description Endpoint to the API server, that allows to download the library directly through the website.
+     */
+    public static readonly API_ENDPOINT_URL: URL = EnvironmentVariablesDataManager.getURL(
+        "NEXT_PUBLIC_API_ENDPOINT_URL",
+        process.env.NEXT_PUBLIC_API_ENDPOINT_URL,
         true,
     )
 
