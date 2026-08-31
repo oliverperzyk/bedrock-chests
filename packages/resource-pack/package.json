@@ -21,6 +21,7 @@
         "bun": ">=1.3.0"
     },
     "scripts": {
+        "build": "bun scripts/BuildPackScript.ts",
         "format": "bunx prettier --write .",
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
