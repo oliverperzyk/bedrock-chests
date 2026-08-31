@@ -3,11 +3,15 @@
  * @description This error is thrown by form's `setButton` method if the slot exceed's form size.
  * @example
  * ```ts
- * import { ChestFormData } from "@oliverperzyk/bedrock-chests"
+ * import { ChestFormData } from "bedrock-chests"
  * import { ItemStack } from "@minecraft/server"
  *
  * const form: ChestFormData = new ChestFormData(27)
+ * // This is okay.
+ * form.setButton(0, new ItemStack("minecraft:stick", 1))
  * // This line of code will throw SlotNotInRangeFormError.
+ * // You cannot set an item on a slot that exceeds form's size. (in this case, 30 > 27)
+ * // Maximum slots in a form is 26 (size - 1).
  * form.setButton(30, new ItemStack("minecraft:stick", 1))
  * ```
  */

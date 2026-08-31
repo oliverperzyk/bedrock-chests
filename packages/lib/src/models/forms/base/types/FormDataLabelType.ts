@@ -2,11 +2,12 @@ import type { RawMessage } from "@minecraft/server"
 
 /**
  * @summary Type that represents a label of a form.
- * @description Type that represents a label of a form. It can be a string or a raw message.
+ * @description Type that represents a label of a form. It can be a string or a raw message (rawtext component).
  * @example
  * ```ts
- * import { FormDataLabelType, ChestFormData } from "@oliverperzyk/bedrock-chests"
+ * import { type FormDataLabelType, ChestFormData } from "bedrock-chests"
  *
+ * // String-type label.
  * const label: FormDataLabelType = "Hello, world!"
  * const alsoLabel: FormDataLabelType = {
  *      translate: "forms.settings.title"

@@ -83,6 +83,7 @@ abstract class BaseFormData {
         _typeId: string,
         _itemsOptions?: IFormDataButtonsItemOptions,
     ): this
+    // @internal Overloading method.
     public setButton(slot: number, ...args: FormDataSetButtonArguments): this {
         if (slot < this.size) {
             throw new SlotNotInRangeFormError(slot, this.size)
@@ -120,6 +121,7 @@ abstract class BaseFormData {
      * @summary Gets a raw form of a form.
      * @description Gets a raw form of a form, that can be used to show the form to a player.
      * @returns Raw form of a form.
+     * @remarks This function is not callable in read-only mode.
      */
     public abstract get rawForm(): ActionFormData
 
@@ -129,6 +131,7 @@ abstract class BaseFormData {
      * @param player Player that will see the form.
      * @param millisecondsWindow Time in milliseconds that the library will try to show the form to a player.
      * @returns Response of a form, if the form was shown successfully. If it was not shown successfully, the function will return a response with a cancelation reason of user's busy:
+     * @remarks This function is not callable in read-only mode.
      * ```ts
      * {
      *   canceled: true,

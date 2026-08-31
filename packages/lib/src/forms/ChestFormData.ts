@@ -73,6 +73,7 @@ class ChestFormData extends BaseFormData {
      * @summary Gets the raw form data.
      * @description This method is used to get the raw form data.
      * @returns An instance of the ActionFormData class.
+     * @remarks This function is not callable in read-only mode.
      */
     public get rawForm(): ActionFormData {
         const titlePrefix: string = `${ChestFormData.FORM_PREFIX}§${this.size.toString().padStart(2, "0")}#${this.options.displayInventory ? "1" : "0"}§r`
@@ -103,6 +104,7 @@ class ChestFormData extends BaseFormData {
      * @description This method is used to show the form to a player.
      * @param player - The player to show the form to.
      * @param millisecondsWindow - The window of the form.
+     * @remarks This function is not callable in read-only mode.
      * @returns A response of the form as a promise.
      */
     public override async show(player: Player, millisecondsWindow: number = 5000): Promise<IChestFormResponse> {

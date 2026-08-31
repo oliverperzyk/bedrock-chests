@@ -4,6 +4,7 @@ import { HardCodedChestsItemsData } from "./HardCodedChestsItemsData"
  * @summary Class that contains identifiers of variants of vanilla items.
  * @description This class is depending on offsets from {@link HardCodedChestsItemsData}.
  * @remarks This class is not updated automatically, as Mojang does not provide data for additional variants of items.
+ * They're resolved by calculating offsets from the base item.
  */
 class DataChestsItemsData {
     /**
