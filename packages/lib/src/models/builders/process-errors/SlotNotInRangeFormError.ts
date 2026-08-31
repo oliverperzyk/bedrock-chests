@@ -3,7 +3,7 @@
  * @description This error is thrown by form's `setButton` method if the slot exceed's form size.
  * @example
  * ```ts
- * import { ChestFormData } from "@oliverperzyk/chest-ui"
+ * import { ChestFormData } from "@oliverperzyk/bedrock-chests"
  * import { ItemStack } from "@minecraft/server"
  *
  * const form: ChestFormData = new ChestFormData(27)

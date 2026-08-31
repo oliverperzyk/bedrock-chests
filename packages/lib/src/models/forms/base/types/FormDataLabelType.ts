@@ -5,7 +5,7 @@ import type { RawMessage } from "@minecraft/server"
  * @description Type that represents a label of a form. It can be a string or a raw message.
  * @example
  * ```ts
- * import { FormDataLabelType, ChestFormData } from "@oliverperzyk/chest-ui"
+ * import { FormDataLabelType, ChestFormData } from "@oliverperzyk/bedrock-chests"
  *
  * const label: FormDataLabelType = "Hello, world!"
  * const alsoLabel: FormDataLabelType = {

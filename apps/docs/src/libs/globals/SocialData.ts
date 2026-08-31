@@ -24,7 +24,7 @@ class SocialData {
         dark: "#000000",
     }
 
-    public static readonly GITHUB_REPOSITORY = "https://github.com/oliverperzyk/chest-ui" as const
+    public static readonly GITHUB_REPOSITORY = "https://github.com/oliverperzyk/bedrock-chests" as const
 
     /**
      * @summary Merge a route with the website endpoint URL.

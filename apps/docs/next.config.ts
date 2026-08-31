@@ -17,17 +17,17 @@ export default {
         return [
             {
                 source: "/repository",
-                destination: "https://github.com/oliverperzyk/chest-ui",
+                destination: "https://github.com/oliverperzyk/bedrock-chests",
                 permanent: true,
             },
             {
                 source: "/issues",
-                destination: "https://github.com/oliverperzyk/chest-ui/issues",
+                destination: "https://github.com/oliverperzyk/bedrock-chests/issues",
                 permanent: true,
             },
             {
                 source: "/github",
-                destination: "https://github.com/oliverperzyk/chest-ui",
+                destination: "https://github.com/oliverperzyk/bedrock-chests",
                 permanent: true,
             },
         ]

@@ -1,6 +1,6 @@
 {
-    "name": "@chest-ui/api",
-    "description": "Small API to synchronize data between the Chest UI library and the Chest UI website.",
+    "name": "@bedrock-chests/api",
+    "description": "Small API to synchronize data between the Bedrock Chests library and the Bedrock Chests website.",
     "version": "1.0.0",
     "private": true,
     "author": {
@@ -8,14 +8,14 @@
         "email": "olek@oliverperzyk.com",
         "url": "https://oliverperzyk.com"
     },
-    "homepage": "https://chest-ui.oliverperzyk.com",
+    "homepage": "https://bedrock-chests.oliverperzyk.com",
     "repository": {
         "type": "git",
-        "url": "https://github.com/oliverperzyk/chest-ui.git"
+        "url": "https://github.com/oliverperzyk/bedrock-chests.git"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/oliverperzyk/chest-ui/issues"
+        "url": "https://github.com/oliverperzyk/bedrock-chests/issues"
     },
     "type": "module",
     "engines": {

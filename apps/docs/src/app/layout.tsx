@@ -14,9 +14,9 @@ import NavigationBarComponent from "../components/layout/navigation/NavigationBa
  */
 const metadata: Metadata = {
     metadataBase: EnvironmentVariables.WEBSITE_ENDPOINT_URL,
-    title: "@oliverperzyk/chest-ui",
+    title: "@oliverperzyk/bedrock-chests",
     description: "The easiest way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
-    applicationName: "@oliverperzyk/chest-ui",
+    applicationName: "@oliverperzyk/bedrock-chests",
     creator: "oliverperzyk (Oliwier Perzyński)",
     authors: [
         {
@@ -26,7 +26,7 @@ const metadata: Metadata = {
     ],
     openGraph: {
         type: "website",
-        title: "@oliverperzyk/chest-ui",
+        title: "@oliverperzyk/bedrock-chests",
         description: "The easiest way to create GUI components that emulate chests in Minecraft: Bedrock Edition.",
     },
 }

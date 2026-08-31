@@ -8,14 +8,14 @@ RUN bun run build
 
 FROM oven/bun:canary-slim AS runner
 
-LABEL org.opencontainers.image.title="@oliverperzyk/chest-ui/docs" \
-      org.opencontainers.image.description="A documentation website for the Chest UI." \
-      org.opencontainers.image.version="0.0.1" \
-      org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \
-      org.opencontainers.image.licenses="AGPL-3.0-only" \
-      org.opencontainers.image.url="https://github.com/oliverperzyk/chest-ui" \
-      org.opencontainers.image.documentation="https://github.com/oliverperzyk/chest-ui" \
-      org.opencontainers.image.source="https://github.com/oliverperzyk/chest-ui.git"
+LABEL org.opencontainers.image.title="@oliverperzyk/bedrock-chests/docs" \
+    org.opencontainers.image.description="A documentation website for the Bedrock Chests." \
+    org.opencontainers.image.version="0.0.1" \
+    org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \
+    org.opencontainers.image.licenses="AGPL-3.0-only" \
+    org.opencontainers.image.url="https://github.com/oliverperzyk/bedrock-chests" \
+    org.opencontainers.image.documentation="https://github.com/oliverperzyk/bedrock-chests" \
+    org.opencontainers.image.source="https://github.com/oliverperzyk/bedrock-chests.git"
 
 WORKDIR /app
 ENV NODE_ENV=production \

@@ -8,14 +8,14 @@ RUN bun run build
 
 FROM oven/bun:canary-slim AS runner
 
-LABEL org.opencontainers.image.title="@oliverperzyk/chest-ui/api" \
-    org.opencontainers.image.description="A REST API for the Chest UI." \
+LABEL org.opencontainers.image.title="@oliverperzyk/bedrock-chests/api" \
+    org.opencontainers.image.description="A REST API for the Bedrock Chests." \
     org.opencontainers.image.version="0.0.1" \
     org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \
     org.opencontainers.image.licenses="AGPL-3.0-only" \
-    org.opencontainers.image.url="https://github.com/oliverperzyk/chest-ui" \
-    org.opencontainers.image.documentation="https://github.com/oliverperzyk/chest-ui" \
-    org.opencontainers.image.source="https://github.com/oliverperzyk/chest-ui.git"
+    org.opencontainers.image.url="https://github.com/oliverperzyk/bedrock-chests" \
+    org.opencontainers.image.documentation="https://github.com/oliverperzyk/bedrock-chests" \
+    org.opencontainers.image.source="https://github.com/oliverperzyk/bedrock-chests.git"
 
 WORKDIR /app
 ENV NODE_ENV=production \

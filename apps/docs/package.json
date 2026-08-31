@@ -1,6 +1,6 @@
 {
-    "name": "@chest-ui/docs",
-    "description": "Documentation for the Chest UI library.",
+    "name": "@bedrock-chests/docs",
+    "description": "Documentation for the Bedrock Chests library.",
     "version": "1.0.0",
     "private": true,
     "author": {
@@ -8,14 +8,14 @@
         "email": "olek@oliverperzyk.com",
         "url": "https://oliverperzyk.com"
     },
-    "homepage": "https://chest-ui.oliverperzyk.com",
+    "homepage": "https://bedrock-chests.oliverperzyk.com",
     "repository": {
         "type": "git",
-        "url": "https://github.com/oliverperzyk/chest-ui.git"
+        "url": "https://github.com/oliverperzyk/bedrock-chests.git"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/oliverperzyk/chest-ui/issues"
+        "url": "https://github.com/oliverperzyk/bedrock-chests/issues"
     },
     "type": "module",
     "engines": {

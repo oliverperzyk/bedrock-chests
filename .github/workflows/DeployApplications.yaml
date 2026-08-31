@@ -86,7 +86,7 @@ jobs:
                   key: ${{ secrets.VPS_SSH_KEY }}
                   script: |
                       set -euo pipefail
-                      cd ~/chest-ui
+                      cd ~/bedrock-chests
 
                       export DOCS_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAMESPACE }}/docs:${{ github.sha }}"
                       export API_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAMESPACE }}/api:${{ github.sha }}"
