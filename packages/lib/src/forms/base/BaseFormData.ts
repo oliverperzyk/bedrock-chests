@@ -141,7 +141,7 @@ abstract class BaseFormData {
     public async show(player: Player, millisecondsWindow: number = 5000): Promise<ActionFormResponse> {
         const rawForm: ActionFormData = this.rawForm
         const currentTimestamp: number = Date.now()
-        while (currentTimestamp > Date.now() + millisecondsWindow) {
+        while (currentTimestamp > Date.now() - millisecondsWindow) {
             try {
                 const resultData: ActionFormResponse = await rawForm.show(player)
                 if (resultData.cancelationReason !== FormCancelationReason.UserBusy) return resultData
