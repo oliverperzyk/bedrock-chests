@@ -16,7 +16,7 @@ env:
     REGISTRY: ghcr.io
     IMAGE_NAMESPACE: ${{ github.repository }}
 jobs:
-    build-and-push:
+    build-applications:
         name: Build and push container images.
         runs-on: ubuntu-latest
         strategy:
@@ -72,10 +72,36 @@ jobs:
                   labels: ${{ steps.meta.outputs.labels }}
                   cache-from: type=gha
                   cache-to: type=gha,mode=max
+    publish-library:
+        name: Publish library to NPM.
+        if: github.ref_type == 'tag'
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: packages/lib
+                shell: bash
+        steps:
+            - name: Checkout repository.
+              uses: actions/checkout@v7
 
-    deploy:
+            - name: Setup Bun.
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Install dependencies.
+              run: bun install --frozen-lockfile
+
+            - name: Set package version from Git tag.
+              run: bun pm pkg set version="${GITHUB_REF_NAME#v}"
+
+            - name: Publish package to NPM.
+              run: bun publish --access public
+              env:
+                  NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+    deploy-applications:
         name: Deploy applications to VPS.
-        needs: build-and-push
+        needs: build-applications
         runs-on: ubuntu-latest
         steps:
             - name: Deploy over SSH.

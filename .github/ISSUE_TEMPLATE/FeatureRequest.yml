@@ -1,7 +1,7 @@
 # Template for requesting new features.
 ---
 name: Feature Request
-description: Suggest an improvement or new feature for ChestUI.
+description: Suggest an improvement or new feature for the Bedrock Chests library.
 title: "feat: "
 labels: ["🪄 enhancement"]
 body:

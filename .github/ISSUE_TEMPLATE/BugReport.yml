@@ -1,7 +1,7 @@
 # Template for reporting bugs.
 ---
 name: Bug Report
-description: Report unexpected or incorrect behavior in ChestUI.
+description: Report unexpected or incorrect behavior in Bedrock Chests library.
 title: "fix: "
 labels: ["🐛 bug"]
 body:
@@ -9,7 +9,7 @@ body:
       attributes:
           value: |
               ## Instructions
-              - Make sure that you are using a supported version of ChestUI.
+              - Make sure that you are using a supported version of Bedrock Chests.
               - Search existing bug reports to see if the problem has already been reported. If it has, add any useful details to the existing issue instead of opening a duplicate.
     - type: dropdown
       id: section

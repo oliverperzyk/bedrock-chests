@@ -7,6 +7,8 @@ import { SlotNotInRangeFormError } from "../../models/builders/process-errors/Sl
 /**
  * @summary Base class for all forms.
  * @description Abstract class that includes basic properties for all forms.
+ * @remarks If you extend this class, you should call `super()` in your constructor at the very beginning, as it
+ * initialized the empty slots inside data.
  */
 abstract class BaseFormData {
     /**
@@ -34,7 +36,9 @@ abstract class BaseFormData {
      * @summary Constructor of a form.
      * @description It's empty for now, as it does not include anything revelant.
      */
-    public constructor() {}
+    public constructor() {
+        this.reinitializeEmptySlots()
+    }
 
     /**
      * @summary Reinitializes empty slots.
@@ -128,6 +132,8 @@ abstract class BaseFormData {
      * ```ts
      * {
      *   canceled: true,
+     *   // UserBusy is returned when a loop is not able to show the form to a player,
+     *   // because the player is busy with another form while being AFK.
      *   cancelationReason: FormCancelationReason.UserBusy
      * }
      * ```
