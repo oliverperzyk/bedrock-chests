@@ -4,7 +4,7 @@ blank_issues_enabled: false
 contact_links:
     - name: Join my Discord server.
       about: Join my Discord server to discuss the project and get help.
-      url: https://oliverperzyk.com/discord-server
+      url: https://community.oliverperzyk.com
     - name: Contact me via mail.
       about: If you feel that issue is too sensitive to be discussed in public, you can contact me via mail.
       url: https://oliverperzyk.com/contact
