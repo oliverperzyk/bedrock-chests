@@ -23,6 +23,7 @@ jobs:
         env:
             NODE_ENV: test
             # Website's environment variables.
+            NEXT_PUBLIC_API_ENDPOINT_URL: https://api.bedrock-chests.oliverperzyk.com/v1
             NEXT_PUBLIC_WEBSITE_ENDPOINT_URL: https://bedrock-chests.oliverperzyk.com
         steps:
             - name: Checkout repository.
