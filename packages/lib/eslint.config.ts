@@ -17,11 +17,12 @@ export default defineConfig([
     },
     {
         files: ["**/*.ts"],
-        plugins: { js: js as never },
+        plugins: { js },
         extends: ["js/recommended"],
         languageOptions: {
             globals: {
                 ...globals.browser,
+                ...globals.bunBuiltin,
                 ...globals.node,
             },
             parserOptions: {
@@ -35,12 +36,9 @@ export default defineConfig([
                     argsIgnorePattern: "^_{1,2}",
                 },
             ],
-            "no-unused-vars": [
-                "error",
-                {
-                    argsIgnorePattern: "^_{1,2}",
-                },
-            ],
+            // This rule is disabled as it wrongly flags TypeScript-only features
+            // (e.g. enumerations, union types, etc.) as unused.
+            "no-unused-vars": "off",
         },
     },
     {

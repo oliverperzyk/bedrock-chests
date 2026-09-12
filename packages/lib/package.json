@@ -38,9 +38,9 @@
         "format:check": "bunx prettier --check .",
         "lint": "bunx eslint .",
         "lint:fix": "bunx eslint --fix .",
-        "build": "bun build ./src/index.ts --target node --outdir dist --minify",
         "test": "bun test",
-        "test:init": "bun ./tests/TestEnvironment.ts"
+        "test:init": "bun ./tests/TestEnvironment.ts",
+        "build": "bun ./scripts/BuildLibraryScript.ts"
     },
     "lint-staged": {
         "**/*.{ts,json,json5,jsonc,md}": [
