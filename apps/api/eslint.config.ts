@@ -7,7 +7,7 @@ import { defineConfig } from "eslint/config"
 
 /**
  * @summary ESLint configuration.
- * @description Configuration of the main library.
+ * @description Configuration of linter for the API application.
  * @see {@link https://eslint.org/docs/latest/use/configure/configuration-files}
  */
 export default defineConfig([
@@ -35,12 +35,9 @@ export default defineConfig([
                     argsIgnorePattern: "^_{1,2}",
                 },
             ],
-            "no-unused-vars": [
-                "error",
-                {
-                    argsIgnorePattern: "^_{1,2}",
-                },
-            ],
+            // This rule is disabled as it wrongly flags TypeScript-only features
+            // (e.g. enumerations, union types, etc.) as unused.
+            "no-unused-vars": "off",
         },
     },
     {

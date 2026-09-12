@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * @summary Enumeration of all possible locations of a selected value in a chest form.
  * @description This enumeration is used to determine the location of a selected value in a chest form.

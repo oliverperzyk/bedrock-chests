@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * @summary Enumeration of all possible sizes of a chest form.
  * @description This enumeration is used to determine the size of a chest form.

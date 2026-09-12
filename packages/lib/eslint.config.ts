@@ -7,7 +7,7 @@ import { defineConfig } from "eslint/config"
 
 /**
  * @summary ESLint configuration.
- * @description Configuration of the main library.
+ * @description Configuration of linter for the library.
  * @see {@link https://eslint.org/docs/latest/use/configure/configuration-files}
  */
 export default defineConfig([
