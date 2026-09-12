@@ -4,7 +4,7 @@ import { exit } from "process"
  * @summary Class that represents a health check docker script.
  * @description This class is used to represent a health check docker script.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class HealthCheckDockerScript {
     /**
      * @summary Private constructor.

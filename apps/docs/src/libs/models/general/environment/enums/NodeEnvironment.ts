@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * @summary Enumeration of node environments.
  * @description This enumeration is used to identify the environment that the application runs in.

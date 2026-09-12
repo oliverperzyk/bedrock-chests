@@ -2,7 +2,7 @@
  * @summary Test environment for the API.
  * @description A class that initializes the test environment for the API.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class TestEnvironment {
     /**
      * @summary Private constructor.
