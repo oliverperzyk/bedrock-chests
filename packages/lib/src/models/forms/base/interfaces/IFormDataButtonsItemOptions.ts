@@ -1,9 +1,11 @@
+import type { IFormDataButtonsOptions } from "./IFormDataButtonsOptions"
+
 /**
  * @summary Options of an item displayed in a form.
  * @description This allows to adjust how items look in a form. Interface is used only, when developer decides
  * to show an item in inventory without using the `setButton` method with ItemStack instance argument.
  */
-interface IFormDataButtonsItemOptions {
+interface IFormDataButtonsItemOptions extends IFormDataButtonsOptions {
     /**
      * @summary Amount that'll be displayed in a form.
      * @description A number that indicates amount of a certain item in a form.

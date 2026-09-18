@@ -59,17 +59,6 @@ class ChestFormData extends BaseFormData {
     }
 
     /**
-     * @summary Sets the title of the form.
-     * @description This method is used to set the title of the form.
-     * @param title - The title of the form.
-     * @returns An instance of the form with updated title.
-     */
-    public setTitle(title: string | RawMessage): this {
-        this.title = title
-        return this
-    }
-
-    /**
      * @summary Gets the raw form data.
      * @description This method is used to get the raw form data.
      * @returns An instance of the ActionFormData class.
@@ -92,8 +81,8 @@ class ChestFormData extends BaseFormData {
                   },
         )
 
-        for (const [label, itemImageInformation] of this.buttons) {
-            actionFormData.button(label, itemImageInformation)
+        for (const { label, image, mode } of this.buttons) {
+            actionFormData.button(this.stringifyButtonInformationToRawLabel(label, mode), image)
         }
 
         return actionFormData

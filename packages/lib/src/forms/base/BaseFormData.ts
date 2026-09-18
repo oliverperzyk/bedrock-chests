@@ -3,6 +3,9 @@ import { ActionFormData, type ActionFormResponse, FormCancelationReason } from "
 import type { IFormDataButtonsItemOptions } from "../../models/forms/base/interfaces/IFormDataButtonsItemOptions"
 import type { FormDataSetButtonArguments } from "../../models/forms/base/types/FormDataSetButtonArguments"
 import { SlotNotInRangeFormError } from "../../models/builders/process-errors/SlotNotInRangeFormError"
+import type { IFormDataButtonLabelInformation } from "../../models/forms/base/interfaces/IFormDataButtonLabelInformation"
+import { FormButtonMode } from "../../models/forms/base/enums/FormButtonMode"
+import type { IFormDataButtonsOptions } from "../../models/forms/base/interfaces/IFormDataButtonsOptions"
 
 /**
  * @summary Base class for all forms.
@@ -25,12 +28,26 @@ abstract class BaseFormData {
      * @summary Buttons of a form.
      * @description Hashmap that includes parsed content of all buttons.
      */
-    protected buttons: [string, string][] = []
+    protected buttons: IFormDataButtonLabelInformation[] = []
     /**
      * @summary Determines if slots that are completly undefined might be clicked.
      * @description If it's set to true, slots in a form will no item might be clicked.
      */
     protected emptySlotsClickable: boolean = false
+
+    /**
+     * @summary Stringifies button information to a raw label.
+     * @description Stringifies button information to a raw label.
+     * @param label Label of a button.
+     * @param mode Mode of a button.
+     * @returns Raw label of a button.
+     */
+    protected stringifyButtonInformationToRawLabel(
+        _label: readonly string[] | readonly RawMessage[],
+        _mode: FormButtonMode,
+    ): RawMessage {
+        return {}
+    }
 
     /**
      * @summary Constructor of a form.
@@ -50,7 +67,11 @@ abstract class BaseFormData {
             this.buttons = this.buttons.slice(0, this.size)
         } else {
             for (let i: number = this.buttons.length; i < this.size; i++) {
-                this.buttons[i] = ["§r", ""]
+                this.buttons[i] = {
+                    label: ["§r"],
+                    image: "",
+                    mode: FormButtonMode.REGULAR,
+                }
             }
         }
     }
@@ -61,14 +82,19 @@ abstract class BaseFormData {
      * @param title Title of a form that'll be displayed.
      * @returns Updated instance of the form.
      */
-    public abstract setTitle(_title: string): this
+    public setTitle(title: string | RawMessage): this {
+        this.title = title
+        return this
+    }
+
     /**
      * @summary Sets an item from it's instance on a certain slot of a chest.
      * @param slot Slot that it'll be placed on.
      * @param itemStack Instance of an item from.
+     * @param buttonOptions Options of a button.
      * @returns Updated instance of the form.
      */
-    public setButton(_slot: number, _itemStack: ItemStack): this
+    public setButton(_slot: number, _itemStack: ItemStack, _buttonOptions?: Readonly<IFormDataButtonsOptions>): this
     /**
      * @summary Sets an item from it's instance on a certain slot of a chest.
      * @param slot Slot that it'll be placed on.
@@ -89,31 +115,26 @@ abstract class BaseFormData {
             throw new SlotNotInRangeFormError(slot, this.size)
         }
 
-        let label: string | RawMessage
+        const firstArgument: ItemStack | string | readonly string[] = args[0]
+        let label: readonly string[]
         const itemImageInformation: string = ""
-        if (args[0] instanceof ItemStack) {
-            const [itemStack] = args
-            label = {
-                rawtext: [
-                    itemStack.nameTag
-                        ? {
-                              text: itemStack.nameTag,
-                          }
-                        : {
-                              translate: itemStack.localizationKey,
-                          },
-                    ...itemStack.getRawLore(),
-                ],
-            }
+        let mode: FormButtonMode
+        if (firstArgument instanceof ItemStack) {
+            const buttonOptions: Readonly<IFormDataButtonsOptions> | undefined =
+                typeof args[1] === "string" ? undefined : args[1]
+            label = [firstArgument.nameTag ?? firstArgument.localizationKey, ...firstArgument.getLore()]
+            mode = buttonOptions?.mode ?? FormButtonMode.REGULAR
         } else {
-            const [labelArgument] = args
-            label = Array.isArray(labelArgument) ? labelArgument.join("\n") : (labelArgument as string)
+            const itemsOptions: IFormDataButtonsItemOptions | undefined = args[2]
+            label = Array.isArray(firstArgument) ? firstArgument : [firstArgument]
+            mode = itemsOptions?.mode ?? FormButtonMode.REGULAR
         }
 
-        this.buttons.splice(slot, 1, [
-            Array.isArray(label) ? label.join("\n") : (label as string),
-            itemImageInformation,
-        ])
+        this.buttons.splice(slot, 1, {
+            label,
+            image: itemImageInformation,
+            mode,
+        })
         return this
     }
 
