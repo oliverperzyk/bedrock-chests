@@ -34,6 +34,11 @@ abstract class BaseFormData {
      * @description If it's set to true, slots in a form will no item might be clicked.
      */
     protected emptySlotsClickable: boolean = false
+    /**
+     * @summary Determines if the inventory is visible.
+     * @description If it's set to true, the inventory will be visible.
+     */
+    protected isInventoryVisible: boolean = true
 
     /**
      * @summary Stringifies button information to a raw label.
@@ -84,6 +89,28 @@ abstract class BaseFormData {
      */
     public setTitle(title: string | RawMessage): this {
         this.title = title
+        return this
+    }
+
+    /**
+     * @summary Sets if the inventory is visible.
+     * @description Sets if the inventory is visible.
+     * @param isInventoryVisible If the inventory is visible.
+     * @returns Updated instance of the form.
+     */
+    public setIsInventoryVisible(isInventoryVisible: boolean): this {
+        this.isInventoryVisible = isInventoryVisible
+        return this
+    }
+
+    /**
+     * @summary Sets if the empty slots are clickable.
+     * @description Sets if the empty slots are clickable.
+     * @param emptySlotsClickable If the empty slots are clickable.
+     * @returns Updated instance of the form.
+     */
+    public setEmptySlotsClickable(emptySlotsClickable: boolean): this {
+        this.emptySlotsClickable = emptySlotsClickable
         return this
     }
 
