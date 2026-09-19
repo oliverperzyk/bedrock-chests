@@ -2,7 +2,7 @@
 ---
 services:
     frontend:
-        container_name: oliverperzyk-bedrock-chests-docs
+        container_name: bedrock-chests-docs
         restart: unless-stopped
         build:
             dockerfile: Dockerfile

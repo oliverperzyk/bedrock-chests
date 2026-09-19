@@ -8,7 +8,7 @@ RUN bun run build
 
 FROM oven/bun:canary-slim AS runner
 
-LABEL org.opencontainers.image.title="@oliverperzyk/bedrock-chests/docs" \
+LABEL org.opencontainers.image.title="@bedrock-chests/docs" \
     org.opencontainers.image.description="A documentation website for the Bedrock Chests." \
     org.opencontainers.image.version="0.0.1" \
     org.opencontainers.image.authors="Oliwier Perzyński <olek@oliverperzyk.com>" \

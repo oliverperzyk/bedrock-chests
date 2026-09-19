@@ -2,7 +2,7 @@
 ---
 services:
     api:
-        container_name: oliverperzyk-bedrock-chests-api
+        container_name: bedrock-chests-api
         restart: unless-stopped
         init: true
         build:
