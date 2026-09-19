@@ -7,7 +7,8 @@ updates:
       target-branch: development
       directories:
           - /
-          - /packages/docs/
+          - /apps/api
+          - /apps/docs
           - /packages/lib
           - /packages/resource-pack
       schedule:
@@ -15,7 +16,8 @@ updates:
           timezone: Europe/Warsaw
       open-pull-requests-limit: 40
       labels:
-          - "🔄 dependencies"
+          - "deps"
+          - "deps/bun"
       commit-message:
           prefix: "chore(bun):"
     # Update GitHub Actions workflows in the root directory and all packages.
@@ -27,17 +29,34 @@ updates:
           timezone: Europe/Warsaw
       open-pull-requests-limit: 10
       labels:
-          - "🔄 dependencies"
+          - "deps"
+          - "deps/actions"
       commit-message:
           prefix: "chore(workflows):"
     # Update Docker image in the documentation application.
     - package-ecosystem: docker
-      directory: /packages/docs
+      directories:
+          - /apps/api
+          - /apps/docs
       schedule:
           interval: monthly
           timezone: Europe/Warsaw
       open-pull-requests-limit: 10
       labels:
-          - "🔄 dependencies"
+          - "deps"
+          - "deps/docker"
       commit-message:
           prefix: "chore(docker):"
+    - package-ecosystem: docker-compose
+      directories:
+          - /apps/api
+          - /apps/docs
+      schedule:
+          interval: monthly
+          timezone: Europe/Warsaw
+      open-pull-requests-limit: 10
+      labels:
+          - "deps"
+          - "deps/docker-compose"
+      commit-message:
+          prefix: "chore(docker-compose):"
