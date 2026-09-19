@@ -1,7 +1,10 @@
 {
     "format_version": 3,
     "metadata": {
-        "authors": ["oliverperzyk (Oliwier Perzyński) <olek@oliverperzyk.com>"],
+        "authors": [
+            "zelisce (Tomasz Z.) <contact@zelisce.dev>",
+            "oliverperzyk (Oliwier Perzyński) <olek@oliverperzyk.com>"
+        ],
         "product_type": "addon",
         "url": "https://bedrock-chests.oliverperzyk.com"
     },
