@@ -152,7 +152,7 @@ abstract class BaseFormData {
 
     protected setButton(
         slot: number,
-        label: string | readonly string[],
+        label: string | readonly string[] | RawMessage | readonly RawMessage[],
         typeId: string,
         itemsOptions?: IFormDataButtonsItemOptions,
     ): this
@@ -164,8 +164,8 @@ abstract class BaseFormData {
             throw new SlotNotInRangeFormError(slot, size)
         }
 
-        const firstArgument: ItemStack | string | readonly string[] = args[0]
-        let label: readonly string[]
+        const firstArgument: ItemStack | string | readonly string[] | RawMessage | readonly RawMessage[] = args[0]
+        let label: readonly string[] | readonly RawMessage[]
         const itemImageInformation: string = ""
         let mode: FormButtonMode
         if (firstArgument instanceof ItemStack) {

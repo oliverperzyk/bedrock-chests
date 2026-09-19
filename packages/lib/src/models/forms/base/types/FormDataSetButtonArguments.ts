@@ -1,4 +1,4 @@
-import type { ItemStack } from "@minecraft/server"
+import type { ItemStack, RawMessage } from "@minecraft/server"
 import type { IFormDataButtonsItemOptions } from "../interfaces/IFormDataButtonsItemOptions"
 import type { IFormDataButtonsOptions } from "../interfaces/IFormDataButtonsOptions"
 
@@ -7,6 +7,7 @@ import type { IFormDataButtonsOptions } from "../interfaces/IFormDataButtonsOpti
  * @description This type describes what method button setting methods can have.
  */
 type FormDataSetButtonArguments =
-    [ItemStack, Readonly<IFormDataButtonsOptions>?] | [string | readonly string[], string, IFormDataButtonsItemOptions?]
+    | [ItemStack, Readonly<IFormDataButtonsOptions>?]
+    | [string | readonly string[] | RawMessage | readonly RawMessage[], string, IFormDataButtonsItemOptions?]
 
 export type { FormDataSetButtonArguments }

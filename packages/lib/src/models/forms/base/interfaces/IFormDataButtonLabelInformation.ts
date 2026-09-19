@@ -1,3 +1,4 @@
+import type { RawMessage } from "@minecraft/server"
 import type { FormButtonMode } from "../enums/FormButtonMode"
 
 /**
@@ -9,7 +10,7 @@ interface IFormDataButtonLabelInformation {
      * @summary Label of the button.
      * @description This label is used to represent the label of the button.
      */
-    readonly label: readonly string[]
+    readonly label: readonly string[] | readonly RawMessage[]
     /**
      * @summary Image of the button.
      * @description This image is used to represent the item or image that will be displayed on the button.
