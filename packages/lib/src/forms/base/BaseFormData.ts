@@ -6,6 +6,7 @@ import { SlotNotInRangeFormError } from "../../models/builders/process-errors/Sl
 import type { IFormDataButtonLabelInformation } from "../../models/forms/base/interfaces/IFormDataButtonLabelInformation"
 import { FormButtonMode } from "../../models/forms/base/enums/FormButtonMode"
 import type { IFormDataButtonsOptions } from "../../models/forms/base/interfaces/IFormDataButtonsOptions"
+import { IChestFormSize } from "../../models/forms/chest/interfaces/IChestFormSize"
 
 /**
  * @summary Base class for all forms.
@@ -18,7 +19,7 @@ abstract class BaseFormData {
      * @summary Size of a form.
      * @description Indicates how big will be the form. It does not cover any grid part, as each type of form is unique.
      */
-    protected abstract size: number
+    protected abstract size: Readonly<IChestFormSize> | number
     /**
      * @summary Title of a form.
      * @description Stores a title of a form. This field should not include the part that is required by JSON UI in a resource pack later.
@@ -55,6 +56,16 @@ abstract class BaseFormData {
     }
 
     /**
+     * @summary Gets the amount of slots of a form.
+     * @description Gets the amount of slots of a form, based on the size of the form.
+     * @returns Amount of slots of a form.
+     * @remarks Used only internally, as it's used to validate slot ranges in other methods.
+     */
+    protected get slotsAmount(): number {
+        return typeof this.size === "number" ? this.size : this.size.width * this.size.height
+    }
+
+    /**
      * @summary Constructor of a form.
      * @description It's empty for now, as it does not include anything revelant.
      */
@@ -68,10 +79,11 @@ abstract class BaseFormData {
      * @remarks This method is called automatically when the size is changed. You should not call it manually, unless you know what you are doing.
      */
     private reinitializeEmptySlots(): void {
-        if (this.buttons.length > this.size) {
-            this.buttons = this.buttons.slice(0, this.size)
+        const size: number = this.slotsAmount
+        if (this.buttons.length > size) {
+            this.buttons = this.buttons.slice(0, size)
         } else {
-            for (let i: number = this.buttons.length; i < this.size; i++) {
+            for (let i: number = this.buttons.length; i < size; i++) {
                 this.buttons[i] = {
                     label: ["§r"],
                     image: "",
@@ -138,8 +150,9 @@ abstract class BaseFormData {
     ): this
     // @internal Overloading method.
     public setButton(slot: number, ...args: FormDataSetButtonArguments): this {
-        if (slot < this.size) {
-            throw new SlotNotInRangeFormError(slot, this.size)
+        const size: number = this.slotsAmount
+        if (slot < size) {
+            throw new SlotNotInRangeFormError(slot, size)
         }
 
         const firstArgument: ItemStack | string | readonly string[] = args[0]

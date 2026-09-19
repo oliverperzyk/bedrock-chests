@@ -1,10 +1,10 @@
 import type { Player, RawMessage } from "@minecraft/server"
 import type { IBaseFormDataOptions } from "../models/forms/base/interfaces/IBaseFormDataOptions"
-import type { ChestFormSize } from "../models/forms/chest/enums/ChestFormSize"
 import { BaseFormData } from "./base/BaseFormData"
 import { ActionFormData, type ActionFormResponse } from "@minecraft/server-ui"
 import type { IChestFormResponse } from "../models/forms/chest/interfaces/IChestFormResponse"
 import { ChestFormSelectedValueLocation } from "../models/forms/chest/enums/ChestFormSelectedValueLocation"
+import type { IChestFormSize } from "../models/forms/chest/interfaces/IChestFormSize"
 
 /**
  * @summary Class that represents a chest form.
@@ -25,7 +25,7 @@ class ChestFormData extends BaseFormData {
      * @summary Size of the form.
      * @description This size is used to store the size of the form.
      */
-    protected size: ChestFormSize
+    protected readonly size: Readonly<IChestFormSize>
     /**
      * @summary Options of the form.
      * @description This options is used to store the options of the form.
@@ -38,7 +38,7 @@ class ChestFormData extends BaseFormData {
      * @param size - The size of the form.
      * @param options - The options of the form.
      */
-    public constructor(size: ChestFormSize, options?: Readonly<IBaseFormDataOptions>) {
+    public constructor(size: IChestFormSize, options?: Readonly<IBaseFormDataOptions>) {
         super()
         this.size = size
         this.options = {
@@ -104,8 +104,9 @@ class ChestFormData extends BaseFormData {
                 cancelationReason: actionFormResponse.cancelationReason!,
             }
 
+        const totalSlots: number = this.size.width * this.size.height
         const definedSelection: number = actionFormResponse.selection!
-        if (definedSelection < this.size) {
+        if (definedSelection < totalSlots) {
             return {
                 canceled: false,
                 selectedValue: {
@@ -117,7 +118,7 @@ class ChestFormData extends BaseFormData {
             return {
                 canceled: false,
                 selectedValue: {
-                    slot: definedSelection - this.size,
+                    slot: definedSelection - totalSlots,
                     location: ChestFormSelectedValueLocation.INVENTORY,
                 },
             }
