@@ -2,6 +2,7 @@
 ---
 name: Verify resource pack.
 on:
+    workflow_dispatch:
     push:
         paths:
             - "packages/resource-pack/**"

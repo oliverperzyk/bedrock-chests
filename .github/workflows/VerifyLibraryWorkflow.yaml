@@ -2,6 +2,7 @@
 ---
 name: Verify library.
 on:
+    workflow_dispatch:
     push:
         paths:
             - "packages/lib/**"

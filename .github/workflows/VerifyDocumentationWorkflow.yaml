@@ -2,6 +2,7 @@
 ---
 name: Verify documentation.
 on:
+    workflow_dispatch:
     push:
         paths:
             - "apps/docs/**"
