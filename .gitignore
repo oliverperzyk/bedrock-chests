@@ -17,7 +17,7 @@
 
 # Environment variables files.
 /**/*.env*
-!/**/.env.example
+!/apps/**/.env.example
 
 # Operating system files.
 /**/*.DS_Store*
