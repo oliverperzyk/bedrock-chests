@@ -1,5 +1,5 @@
 import type { FormCancelationReason } from "@minecraft/server-ui"
-import type { ChestFormSelectedValueLocation } from "../enums/ChestFormSelectedValueLocation"
+import { FormSelectedValueLocation } from "../../base/enums/ChestFormSelectedValueLocation"
 
 /**
  * @summary Type that represents a response of a chest form.
@@ -32,7 +32,7 @@ type IChestFormResponse =
            */
           readonly selectedValue: {
               readonly slot: number
-              readonly location: ChestFormSelectedValueLocation
+              readonly location: FormSelectedValueLocation
           }
       }
 

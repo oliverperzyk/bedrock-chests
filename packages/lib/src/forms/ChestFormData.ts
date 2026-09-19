@@ -1,10 +1,13 @@
-import type { Player, RawMessage } from "@minecraft/server"
+import type { ItemStack, Player } from "@minecraft/server"
 import type { IBaseFormDataOptions } from "../models/forms/base/interfaces/IBaseFormDataOptions"
-import { BaseFormData } from "./base/BaseFormData"
-import { ActionFormData, type ActionFormResponse } from "@minecraft/server-ui"
+import type { IFormDataButtonsItemOptions } from "../models/forms/base/interfaces/IFormDataButtonsItemOptions"
+import type { IFormDataButtonsOptions } from "../models/forms/base/interfaces/IFormDataButtonsOptions"
+import type { FormDataSetButtonArguments } from "../models/forms/base/types/FormDataSetButtonArguments"
 import type { IChestFormResponse } from "../models/forms/chest/interfaces/IChestFormResponse"
-import { ChestFormSelectedValueLocation } from "../models/forms/chest/enums/ChestFormSelectedValueLocation"
 import type { IChestFormSize } from "../models/forms/chest/interfaces/IChestFormSize"
+import { ActionFormData, type ActionFormResponse } from "@minecraft/server-ui"
+import { BaseFormData } from "./base/BaseFormData"
+import { FormSelectedValueLocation } from "../models/forms/base/enums/ChestFormSelectedValueLocation"
 
 /**
  * @summary Class that represents a chest form.
@@ -17,20 +20,10 @@ class ChestFormData extends BaseFormData {
      */
     private static readonly FORM_PREFIX: string = "§c§h§e§s§t§r"
     /**
-     * @summary Title of the form.
-     * @description This title is used to store the title of the form.
-     */
-    protected title: string | RawMessage
-    /**
      * @summary Size of the form.
      * @description This size is used to store the size of the form.
      */
     protected readonly size: Readonly<IChestFormSize>
-    /**
-     * @summary Options of the form.
-     * @description This options is used to store the options of the form.
-     */
-    private options: Readonly<IBaseFormDataOptions>
 
     /**
      * @summary Private constructor.
@@ -56,6 +49,39 @@ class ChestFormData extends BaseFormData {
                 },
             ],
         }
+    }
+
+    /**
+     * @summary Sets an item from it's instance on a certain slot of a chest.
+     * @param slot Slot that it'll be placed on.
+     * @param itemStack Instance of an item from.
+     * @param buttonOptions Options of a button.
+     * @returns Updated instance of the form.
+     */
+
+    public override setButton(
+        slot: number,
+        _itemStack: ItemStack,
+        _buttonOptions?: Readonly<IFormDataButtonsOptions>,
+    ): this
+    /**
+     * @summary Sets an item from it's instance on a certain slot of a chest.
+     * @param slot Slot that it'll be placed on.
+     * @param label Label of a button.
+     * @param typeId Type ID of an item.
+     * @param itemsOptions Options of an item.
+     * @returns Updated instance of the form.
+     */
+    public override setButton(
+        _slot: number,
+        _label: string | readonly string[],
+        _typeId: string,
+        _itemsOptions?: IFormDataButtonsItemOptions,
+    ): this
+
+    // @internal Overloading method.
+    public override setButton(slot: number, ...args: FormDataSetButtonArguments): this {
+        return (super.setButton as (slot: number, ...args: FormDataSetButtonArguments) => this)(slot, ...args)
     }
 
     /**
@@ -111,7 +137,7 @@ class ChestFormData extends BaseFormData {
                 canceled: false,
                 selectedValue: {
                     slot: definedSelection,
-                    location: ChestFormSelectedValueLocation.CHEST,
+                    location: FormSelectedValueLocation.FORM,
                 },
             }
         } else {
@@ -119,7 +145,7 @@ class ChestFormData extends BaseFormData {
                 canceled: false,
                 selectedValue: {
                     slot: definedSelection - totalSlots,
-                    location: ChestFormSelectedValueLocation.INVENTORY,
+                    location: FormSelectedValueLocation.INVENTORY,
                 },
             }
         }

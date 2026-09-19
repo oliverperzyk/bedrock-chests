@@ -4,7 +4,7 @@ import type { IFormDataButtonsOptions } from "../interfaces/IFormDataButtonsOpti
 
 /**
  * @summary An array with types that method of setting a button can take.
- * @description This type describes what method `BaseFormData.setButton` can have.
+ * @description This type describes what method button setting methods can have.
  */
 type FormDataSetButtonArguments =
     [ItemStack, Readonly<IFormDataButtonsOptions>?] | [string | readonly string[], string, IFormDataButtonsItemOptions?]

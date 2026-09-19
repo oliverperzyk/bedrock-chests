@@ -7,6 +7,7 @@ import type { IFormDataButtonLabelInformation } from "../../models/forms/base/in
 import { FormButtonMode } from "../../models/forms/base/enums/FormButtonMode"
 import type { IFormDataButtonsOptions } from "../../models/forms/base/interfaces/IFormDataButtonsOptions"
 import { IChestFormSize } from "../../models/forms/chest/interfaces/IChestFormSize"
+import { IBaseFormDataOptions } from "../../models/forms/base/interfaces/IBaseFormDataOptions"
 
 /**
  * @summary Base class for all forms.
@@ -24,22 +25,20 @@ abstract class BaseFormData {
      * @summary Title of a form.
      * @description Stores a title of a form. This field should not include the part that is required by JSON UI in a resource pack later.
      */
-    protected abstract title: string | RawMessage
+    protected title: string | RawMessage = ""
     /**
      * @summary Buttons of a form.
      * @description Hashmap that includes parsed content of all buttons.
      */
     protected buttons: IFormDataButtonLabelInformation[] = []
     /**
-     * @summary Determines if slots that are completly undefined might be clicked.
-     * @description If it's set to true, slots in a form will no item might be clicked.
+     * @summary Options of a form.
+     * @description Stores options of a form.
      */
-    protected emptySlotsClickable: boolean = false
-    /**
-     * @summary Determines if the inventory is visible.
-     * @description If it's set to true, the inventory will be visible.
-     */
-    protected isInventoryVisible: boolean = true
+    protected options: IBaseFormDataOptions = {
+        displayInventory: true,
+        reactToInventoryClicks: true,
+    }
 
     /**
      * @summary Stringifies button information to a raw label.
@@ -111,18 +110,24 @@ abstract class BaseFormData {
      * @returns Updated instance of the form.
      */
     public setIsInventoryVisible(isInventoryVisible: boolean): this {
-        this.isInventoryVisible = isInventoryVisible
+        this.options = {
+            ...this.options,
+            displayInventory: isInventoryVisible,
+        }
         return this
     }
 
     /**
-     * @summary Sets if the empty slots are clickable.
-     * @description Sets if the empty slots are clickable.
-     * @param emptySlotsClickable If the empty slots are clickable.
+     * @summary Sets if the inventory should react to clicks.
+     * @description Sets if the inventory should react to clicks.
+     * @param reactToInventoryClicks If the inventory should react to clicks.
      * @returns Updated instance of the form.
      */
-    public setEmptySlotsClickable(emptySlotsClickable: boolean): this {
-        this.emptySlotsClickable = emptySlotsClickable
+    public setReactToInventoryClicks(reactToInventoryClicks: boolean): this {
+        this.options = {
+            ...this.options,
+            reactToInventoryClicks,
+        }
         return this
     }
 
@@ -133,7 +138,9 @@ abstract class BaseFormData {
      * @param buttonOptions Options of a button.
      * @returns Updated instance of the form.
      */
-    public setButton(_slot: number, _itemStack: ItemStack, _buttonOptions?: Readonly<IFormDataButtonsOptions>): this
+
+    protected setButton(_slot: number, _itemStack: ItemStack, _buttonOptions?: Readonly<IFormDataButtonsOptions>): this
+
     /**
      * @summary Sets an item from it's instance on a certain slot of a chest.
      * @param slot Slot that it'll be placed on.
@@ -142,14 +149,16 @@ abstract class BaseFormData {
      * @param itemsOptions Options of an item.
      * @returns Updated instance of the form.
      */
-    public setButton(
-        _slot: number,
-        _label: string | readonly string[],
-        _typeId: string,
-        _itemsOptions?: IFormDataButtonsItemOptions,
+
+    protected setButton(
+        slot: number,
+        label: string | readonly string[],
+        typeId: string,
+        itemsOptions?: IFormDataButtonsItemOptions,
     ): this
+
     // @internal Overloading method.
-    public setButton(slot: number, ...args: FormDataSetButtonArguments): this {
+    protected setButton(slot: number, ...args: FormDataSetButtonArguments): this {
         const size: number = this.slotsAmount
         if (slot < size) {
             throw new SlotNotInRangeFormError(slot, size)
