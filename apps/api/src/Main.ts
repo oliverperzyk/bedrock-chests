@@ -1,3 +1,6 @@
+import { EnvironmentVariables } from "./globals/EnvironmentVariables"
+import { ApplicationInstanceManager } from "./globals/managers/ApplicationInstanceManager"
+
 /**
  * @summary Entrypoint of the API.
  * @description Entrypoint of the API.
@@ -23,6 +26,8 @@ class Main {
      * @description Initializes the API & its dependencies.
      */
     private static async init(): Promise<void> {
-        console.log("Hello, world!")
+        ApplicationInstanceManager.instance.listen(EnvironmentVariables.APP_PORT, async (): Promise<void> => {
+            console.log(`API is running on port ${EnvironmentVariables.APP_PORT}.`)
+        })
     }
 }

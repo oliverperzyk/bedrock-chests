@@ -1,4 +1,5 @@
 import express from "express"
+import itemsRouter from "@/oliverperzyk/api/routes/v1/ItemsRoute"
 
 /**
  * @summary Manager of the Express application instance.
@@ -26,9 +27,18 @@ class ApplicationInstanceManager {
         if (this.internalInstance === null) {
             this.internalInstance = express()
             this.internalInstance.use(express.json(), express.urlencoded({ extended: true }))
+            void this.initializeRoutes()
         }
 
         return this.internalInstance
+    }
+
+    /**
+     * @summary Initializes the routes.
+     * @description Initializes all routes of the application.
+     */
+    private static async initializeRoutes(): Promise<void> {
+        this.instance.use("/api/v1/items/", itemsRouter)
     }
 }
 

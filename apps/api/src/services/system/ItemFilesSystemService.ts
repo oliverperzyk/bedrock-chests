@@ -1,5 +1,6 @@
 import type { IItemsIdentifiers } from "@/oliverperzyk/models/services/system/interfaces/IItemsIdentifiers"
-import { existsSync, readFileSync } from "fs"
+import { existsSync } from "fs"
+import { readFile } from "fs/promises"
 import { join } from "path"
 
 /**
@@ -9,12 +10,12 @@ import { join } from "path"
 class ItemFilesSystemService {
     /**
      * @summary Checks if the version is valid.
-     * @description Accepts a `X.Y.Z` numeric version string that is exactly 7 characters long.
+     * @description Accepts a numeric `X.Y.Z` or `X.Y.Z.W` version string.
      * @param version - The version to check.
      * @returns True if the version is valid, false otherwise.
      */
-    public static isValid(version: string): boolean {
-        return /^[0-9]+\.[0-9]+\.[0-9]+$/.test(version) && version.length === 7
+    public static isValid(version: unknown): version is `${number}.${number}.${number}${`.${number}`}` {
+        return typeof version === "string" && /^[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?$/.test(version)
     }
 
     /**
@@ -41,9 +42,10 @@ class ItemFilesSystemService {
      * @description Parses `public/configuration/json/items/{version}.json` as JSON. Throws if the file is missing.
      * @returns The parsed identifiers, or null if the file content is not valid JSON.
      */
-    public read(): IItemsIdentifiers | null {
+    public async read(): Promise<IItemsIdentifiers | null> {
         const filePath: string = join(process.cwd(), "public", "configuration", "json", "items", `${this.version}.json`)
-        const fileContent: string = readFileSync(filePath, "utf8")
+        if (!this.exists()) return null
+        const fileContent: string = await readFile(filePath, "utf-8")
         try {
             return JSON.parse(fileContent)
         } catch {
