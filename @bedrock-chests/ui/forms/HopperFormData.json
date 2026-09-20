@@ -1,0 +1,4 @@
+{
+    "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+    "namespace": "hopper_form_data"
+}

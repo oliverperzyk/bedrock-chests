@@ -1,0 +1,56 @@
+{
+    "name": "@bedrock-chests/resource-pack",
+    "description": "Resource pack for the Bedrock Chests library, that is in demand of rendering GUI components.",
+    "version": "1.0.0",
+    "private": true,
+    "author": {
+        "name": "oliverperzyk (Oliwier Perzyński)",
+        "email": "olek@oliverperzyk.com",
+        "url": "https://oliverperzyk.com"
+    },
+    "homepage": "https://bedrock-chests.oliverperzyk.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/oliverperzyk/bedrock-chests.git"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/oliverperzyk/bedrock-chests/issues"
+    },
+    "engines": {
+        "bun": ">=1.3.0"
+    },
+    "scripts": {
+        "build": "bun scripts/BuildPackScript.ts",
+        "format": "bunx prettier --write .",
+        "format:check": "bunx prettier --check .",
+        "lint": "bunx eslint .",
+        "lint:fix": "bunx eslint --fix .",
+        "test": "bun test",
+        "test:init": "bun ./tests/TestEnvironment.ts"
+    },
+    "lint-staged": {
+        "**/*.{ts,json,json5,jsonc,md}": [
+            "bunx prettier --write --ignore-unknown",
+            "bunx eslint --fix"
+        ],
+        "**/*.{yml,yaml}": [
+            "bunx prettier --write --ignore-unknown"
+        ]
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^2.0.1",
+        "@eslint/markdown": "^8.0.3",
+        "@types/bun": "^1.3.14",
+        "@types/node": "^26.1.1",
+        "@typescript/native": "npm:typescript@^7.0.2",
+        "eslint": "^10.7.0",
+        "globals": "^17.7.0",
+        "jiti": "^2.7.0",
+        "lint-staged": "^17.0.8",
+        "prettier": "^3.9.5",
+        "typescript": "^6.0.2",
+        "typescript-eslint": "^8.64.0"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui_defs.schema.json",
+    "ui_defs": [
+        // Container forms
+        "@bedrock-chests/ui/forms/BrewingStandFormData.json",
+        "@bedrock-chests/ui/forms/ChestFormData.json",
+        "@bedrock-chests/ui/forms/CraftingFormData.json",
+        "@bedrock-chests/ui/forms/DropperFormData.json",
+        "@bedrock-chests/ui/forms/FurnaceFormData.json",
+        "@bedrock-chests/ui/forms/HopperFormData.json",
+        // Container elements
+        "@bedrock-chests/ui/container/Base.json",
+        "@bedrock-chests/ui/container/Item.json"
+    ]
+}

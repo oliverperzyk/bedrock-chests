@@ -1,0 +1,132 @@
+{
+   "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+   "namespace": "bedrock-chests-item",
+   "item": {
+      "type": "panel",
+      "size": [
+         "18px",
+         "18px"
+      ],
+      "bindings": [
+         {
+            "binding_type": "collection",
+            "binding_collection_name": "form_buttons"
+         }
+      ],
+      "controls": [
+         {
+            "button@bedrock-chests-item.item_button": {}
+         },
+         {
+            "content@bedrock-chests-item.item_content": {}
+         }
+      ]
+   },
+   "button_template": {
+      "type": "button",
+      "focus_enabled": true,
+      "default_control": "default",
+      "hover_control": "hover",
+      "pressed_control": "pressed",
+      "locked_control": "locked",
+      "sound_name": "random.click",
+      "button_mappings": [
+         {
+            "from_button_id": "button.menu_select",
+            "to_button_id": "#button_id",
+            "mapping_type": "pressed"
+         },
+         {
+            "from_button_id": "button.menu_ok",
+            "to_button_id": "#button_id",
+            "mapping_type": "focused"
+         },
+         {
+            "from_button_id": "bedrock-chests.button_true",
+            "to_button_id": "button.form_button_click",
+            "mapping_type": "global"
+         }
+      ],
+      "bindings": [
+         {
+            "binding_type": "view",
+            "source_property_name": "('bedrock-chests.button_' + ('%.1s' * #form_button_text = 't'))",
+            "target_property_name": "#button_id"
+         }
+      ],
+      "controls": [
+         {
+            "default": {
+               "type": "image",
+               "texture": "@bedrock-chests/textures/item/background/default"
+            }
+         },
+         {
+            "hover": {
+               "type": "image",
+               "texture": "@bedrock-chests/textures/item/background/hover",
+               "controls": [
+                  {
+                     "hover_text@bedrock-chests-item.button_hover_text": {}
+                  }
+               ]
+            }
+         },
+         {
+            "pressed": {
+               "type": "image",
+               "texture": "@bedrock-chests/textures/item/background/default"
+            }
+         }
+      ]
+   },
+   "button_hover_text": {
+      "type": "custom",
+      "renderer": "hover_text_renderer",
+      "allow_clipping": false,
+      // layer must be this high due to scrollbars
+      "layer": 30,
+      "bindings": [
+         {
+            "binding_type": "view",
+            // removes all tags to show clean text
+            "source_property_name": "(#form_button_text - ('%.2s' * #form_button_text))",
+            "target_property_name": "#hover_text"
+         }
+      ]
+   },
+   "item_content": {
+      "type": "panel",
+      "controls": [
+         {
+            "renderer_panel": {
+               "type": "panel",
+               "size": [
+                  "16px",
+                  "16px"
+               ],
+               "controls": [
+                  {
+                     "renderer@bedrock-chests-item.item_content": {}
+                  }
+               ]
+            }
+         }
+      ]
+   },
+   "item_renderer": {
+      "type": "custom",
+      "renderer": "inventory_item_renderer",
+      "bindings": [
+         {
+            "binding_type": "collection",
+            "binding_collection_name": "form_buttons",
+            "binding_name": "#form_button_texture"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": ""
+         }
+      ]
+   }
+}

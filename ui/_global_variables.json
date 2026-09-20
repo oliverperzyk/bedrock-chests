@@ -1,0 +1,6 @@
+{
+    "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/global_variables.schema.json",
+    // You can remove or change the texture how you want. Remove, comment or uncomment one of the lines below.
+    "$container_background_texture": "@bedrock-chests/textures/container/background"
+    //"$container_background_texture": "textures/ui/dialog_background_opaque"
+}

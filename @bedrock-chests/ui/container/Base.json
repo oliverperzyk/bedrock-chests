@@ -1,0 +1,8 @@
+{
+    "$schema": "https://kalmemarq.github.io/Bugrock-JSON-UI-Schemas/ui.schema.json",
+    "namespace": "bedrock-chests-container",
+    "container": {
+        "type": "panel",
+        "$content": "common.empty_panel"
+    }
+}
