@@ -1,5 +1,6 @@
 import express from "express"
 import itemsRouter from "@/oliverperzyk/api/routes/v1/ItemsRoute"
+import healthRouter from "@/oliverperzyk/api/routes/v1/HealthRoute"
 
 /**
  * @summary Manager of the Express application instance.
@@ -38,7 +39,8 @@ class ApplicationInstanceManager {
      * @description Initializes all routes of the application.
      */
     private static async initializeRoutes(): Promise<void> {
-        this.instance.use("/api/v1/items/", itemsRouter)
+        this.instance.use("/api/v1/items", itemsRouter)
+        this.instance.use("/api/v1/health", healthRouter)
     }
 }
 
