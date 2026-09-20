@@ -1,8 +1,0 @@
-{
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        // Compiler options.
-        "noEmit": true
-    },
-    "include": ["./tests/**/*.ts"]
-}
