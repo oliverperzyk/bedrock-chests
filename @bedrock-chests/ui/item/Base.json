@@ -99,18 +99,28 @@
       "type": "panel",
       "controls": [
          {
-            "renderer_panel": {
-               "type": "panel",
-               "size": [
-                  "16px",
-                  "16px"
-               ],
-               "controls": [
-                  {
-                     "renderer@bedrock-chests-item.item_content": {}
-                  }
-               ]
-            }
+            "texture_switcher@bedrock-chests-item.item_texture_switcher": {}
+         },
+         {
+            "durability@bedrock-chests-item.item_durability": {}
+         },
+         {
+            "counter@bedrock-chests-item.item_counter": {}
+         }
+      ]
+   },
+   "item_texture_switcher": {
+      "type": "panel",
+      "size": [
+         "16px",
+         "16px"
+      ],
+      "controls": [
+         {
+            "renderer@bedrock-chests-item.item_renderer": {}
+         },
+         {
+            "image@bedrock-chests-item.item_image": {}
          }
       ]
    },
@@ -125,7 +135,141 @@
          },
          {
             "binding_type": "view",
-            "source_property_name": ""
+            "source_property_name": "('%.2s' * #form_button_texture = 'r&')",
+            "target_property_name": "#visible"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "((#form_button_texture - 'r&') * 65536)",
+            "target_property_name": "#item_id_aux"
+         }
+      ]
+   },
+   "item_image": {
+      "type": "image",
+      "texture": "#texture",
+      "bindings": [
+         {
+            "binding_type": "collection",
+            "binding_collection_name": "form_buttons",
+            "binding_name": "#form_button_texture"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "('%.2s' * #form_button_texture = 'i&')",
+            "target_property_name": "#visible"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "(#form_button_texture - 'i&')",
+            "target_property_name": "#texture"
+         }
+      ]
+   },
+   "item_durability": {
+      "type": "panel",
+      "anchor_from": "bottom_middle",
+      "anchor_to": "bottom_middle",
+      "size": [
+         "100%",
+         "4px"
+      ],
+      "offset": [
+         "0px",
+         "-1px"
+      ],
+      "controls": [
+         {
+            "background": {
+               "type": "image",
+               // Color for black
+               "color": [
+                  0.00392,
+                  0.00392,
+                  0.01176
+               ],
+               "size": [
+                  "100%",
+                  "100%"
+               ]
+            }
+         },
+         {
+            "bar": {
+               "type": "image",
+               "anchor_from": "top_middle",
+               "anchor_to": "top_middle",
+               "clip_direction": "left",
+               "clip_pixelperfect": false,
+               // $one variable is used for its decimals - bindings do not accept decimals unless it's a variable
+               "$one": 1.0,
+               // variable to set the max of the bar, also preserving the decimal point
+               "$max": 99.0,
+               // Color for green
+               "color": [
+                  0.06667,
+                  0.95294,
+                  0.01176
+               ],
+               "size": [
+                  "100%",
+                  "2px"
+               ],
+               "bindings": [
+                  {
+                     "binding_type": "collection",
+                     "binding_collection_name": "form_buttons",
+                     "binding_name": "#form_button_text"
+                  },
+                  {
+                     "binding_type": "view",
+                     "source_property_name": "('%.4s' * #form_button_text - '%.2s' * #form_button_text)",
+                     "target_property_name": "#length"
+                  },
+                  {
+                     "binding_type": "view",
+                     "source_property_name": "(($max - #length) / $max)",
+                     "target_property_name": "#ratio"
+                  },
+                  {
+                     "binding_type": "view",
+                     "source_property_name": "(not (#length = 99))",
+                     "target_property_name": "#visible"
+                  }
+               ]
+            }
+         }
+      ]
+   },
+   "item_counter": {
+      "type": "label",
+      "text": "#text",
+      "anchor_from": "bottom_right",
+      "anchor_to": "bottom_right",
+      "size": [
+         "default",
+         "default"
+      ],
+      "bindings": [
+         {
+            "binding_type": "collection",
+            "binding_collection_name": "form_buttons",
+            "binding_name": "#form_button_text"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "('%.4s' * #form_button_text - '%.2s' * #form_button_text)",
+            "target_property_name": "#count"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "('§z' + #count)",
+            "target_property_name": "#text"
+         },
+         {
+            "binding_type": "view",
+            "source_property_name": "(not (#count = 0))",
+            "target_property_name": "#visible"
          }
       ]
    }
