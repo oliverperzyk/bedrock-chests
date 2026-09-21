@@ -5,6 +5,9 @@
     "additionalProperties": false,
     "required": ["items"],
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
         "items": {
             "type": "object",
             "minProperties": 1,

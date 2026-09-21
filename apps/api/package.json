@@ -29,6 +29,7 @@
         "test": "bun test",
         "test:init": "bun ./tests/TestEnvironment.ts",
         "healthcheck": "bun run ./scripts/docker/HealthCheckDockerScript.ts",
+        "dump:vanilla-mappings": "bun run ./scripts/DumpVanillaMappingsScript.ts",
         "build": "bun build --target bun --outdir dist --minify ./src/Main.ts"
     },
     "lint-staged": {
